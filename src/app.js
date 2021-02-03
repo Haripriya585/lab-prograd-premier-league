@@ -3,7 +3,11 @@ let managerName = "Alex Ferguson";
 let managerAge = 78;
 let currentTeam = "Manchester FC";
 let trophiesWon = 27;
-
+function createManager(managerName, managerAge, currentTeam, trophiesWon) {
+  let a = [];
+  a.push(managerName, managerAge, currentTeam, trophiesWon);
+  return a;
+}
 //Write your function here
 
 // Don't edit the following code
@@ -32,9 +36,26 @@ try {
 }
 
 //Progression 3 - Filter players that debuted in ___ year
+function filterByDebut(year) {
+  let arr = [];
 
+  for (var i = 0; i < players.length; i++)
+    if (players[i].debut == year)
+      arr.push(players[i]);
+
+  return arr;
+
+}
 //Progression 4 - Filter players that play at the position _______
+function filterByPosition(position) {
 
+  let arr = [];
+  for (var i = 0; i < players.length; i++)
+    if (players[i].position == position)
+      arr.push(players[i]);
+  return arr;
+
+}
 //Progression 5 - Filter players that have won ______ award
 
 //Progression 6 - Filter players that won ______ award ____ times
@@ -42,9 +63,36 @@ try {
 //Progression 7 - Filter players that won ______ award and belong to ______ country
 
 //Progression 8 - Filter players that won atleast ______ awards, belong to ______ team and are younger than ____
+function filterByNoOfAwardsxTeamxAge(noOfAwards, team, age, country) {
+  let arr = [];
+  var count = 0;
+  for (var i = 0; i < players.length; i++) {
+    if ((players[i].awards.length >= noOfAwards) && (players[i].team == team) && (players[i].age < age)) {
+      arr.push(players[i]);
+      count++;
+    }
+  }
+  return arr;
+
+
+}
 
 //Progression 9 - Sort players in descending order of their age
+function SortByAge() {
 
+  for (var i = 0; i < players.length; i++) {
+    for (var j = 0; j < players.length - 1 - i; j++) {
+      var l = players[j].compareTo(players[j + 1]);
+      if (l != -1) {
+        let temp = players[j];
+        players[j] = players[j + 1];
+        players[j + 1] = temp;
+      }
+    }
+  }
+  return players;
+
+}
 //Progression 10 - Sort players beloging to _____ team in descending order of awards won
 
 //Challenge 1 - Sort players that have won _______ award _____ times and belong to _______ country in alphabetical order of their names
